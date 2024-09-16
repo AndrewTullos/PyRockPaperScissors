@@ -1,13 +1,3 @@
-# Ask user input for rock paper scissors
-   # Correct if user inputs response not permitted
-# Generate a computerized choice for one of the choices
-# Compare the choices of the user vs the computer
-# Genrater a response // logic
-   # Rock beats Scissors
-   # Scissors beats Paper
-   # Paper beats Rock
-   # Tie if choices are same
-
 import random
 
 def game_start():
