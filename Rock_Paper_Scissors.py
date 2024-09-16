@@ -32,20 +32,18 @@ def game_start():
       elif user_input == 'paper' and comp_output == 'scissors':
          print('You chose 📃 \n Computer chose ✂️ \n You lose!')
       elif user_input == 'scissors' and comp_output == 'rock':
-         print('You chose ✂️ \n Computer chose ✂️ \n You lose!')
+         print('You chose ✂️ \n Computer chose 🪨 \n You lose!')
       else: print("It's a draw! You both chose the same.")
-
-
-
    except:
       print("Please select 'rock', 'paper', or 'scissors'")
 
-      # Convert choice to number
-      # if user_input == rock:
-      #    user_choice = 1
-
-
-
+   try:
+      again = input("Would you like to play again? (Yes/No) ").lower
+      if again == 'yes':
+         game_start()
+      else: print("Thanks for playing!")
+   except:
+      print("This is not a valid choice, type yes or no.")
 game_start()
 
 
