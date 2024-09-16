@@ -11,40 +11,31 @@
 import random
 
 def game_start():
-   try:
-      comp_choice = random.randrange(1, 4)
-      if comp_choice == 1:
-         comp_output = 'rock'
-      elif comp_choice == 2:
-         comp_output = 'paper'
-      else: comp_output == 'scissors'
-      
-      user_input = input("Rock, Paper or Scissors? ").lower()
+   while True:
+      try:
+         comp_choice = random.choice(["rock", "paper", "scissors"])
+         user_input = input("Rock, Paper or Scissors? ").lower()
 
-      if user_input == 'paper' and comp_output == 'rock':
-         print('You chose 📃 \n Computer chose 🪨 \n You win!')
-      elif user_input == 'scissors' and comp_output == 'paper':
-         print('You chose ✂️ \n Computer chose 📃 \n You win!')
-      elif user_input == 'rock' and comp_output == 'scissors' :
-         print('You chose 🪨 \n Computer chose ✂️ \n You win!')
-      elif user_input == 'rock' and comp_output == 'paper':
-         print('You chose 🪨 \n Computer chose 📃 \n You lose!')
-      elif user_input == 'paper' and comp_output == 'scissors':
-         print('You chose 📃 \n Computer chose ✂️ \n You lose!')
-      elif user_input == 'scissors' and comp_output == 'rock':
-         print('You chose ✂️ \n Computer chose 🪨 \n You lose!')
-      else: print("It's a draw! You both chose the same.")
-   except:
-      print("Please select 'rock', 'paper', or 'scissors'")
+         if user_input not in ["rock", "paper", "scissors"]:
+            raise ValueError("Invalid input. Please choose 'rock', 'paper', or 'scissors'.")
 
-   try:
-      again = input("Would you like to play again? (Yes/No) ").lower
-      if again == 'yes':
-         game_start()
-      else: print("Thanks for playing!")
-   except:
-      print("This is not a valid choice, type yes or no.")
+         if user_input == comp_choice:
+            print("It's a draw! You both chose the same.")
+         elif (user_input == "rock" and comp_choice == "scissors") or \
+            (user_input == "paper" and comp_choice == "rock") or \
+            (user_input == "scissors" and comp_choice == "paper"):
+
+            print(f"You chose {user_input}. Computer chose {comp_choice}. You win!")
+         else:
+            print(f"You chose {user_input}. Computer chose {comp_choice}. You lose!")
+
+         play_again = input("Would you like to play again? (Yes/No) ").lower()
+         if play_again not in ["yes", "no"]:
+            raise ValueError("Invalid input. Please type 'yes' or 'no'.")
+         if play_again == "no":
+            print("Thanks for playing!")
+            break
+      except ValueError as e:
+         print(e)
+
 game_start()
-
-
-
